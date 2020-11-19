@@ -1,17 +1,19 @@
+import useSwr from "swr";
+
 const baseUrl = `https://gentle-journey-87388.herokuapp.com`;
 
-export function fetchComments() {
-  return fetch(`${baseUrl}/comments`);
+function fetchWithBase(additionalPath) {
+  return fetch(`${baseUrl}/${additionalPath}`);
 }
 
-export function fetchComment(id) {
-  return fetch(`${baseUrl}/comment/${id}`);
+export function fetchVideos() {
+  return fetchWithBase(`videos`).then((res) => res.json());
 }
 
-export function fetchCommentsArr() {
-  return fetch(`${baseUrl}/comments_arr`);
+export function fetchVideo(id) {
+  return fetchWithBase(`video/${id}`).then((res) => res.json());
 }
 
-export function fetchUser(id) {
-  return fetch(`${baseUrl}/user/${id}`);
+export function fetchReplies(id) {
+  return fetchWithBase(`replies/${id}`).then((res) => res.json());
 }
